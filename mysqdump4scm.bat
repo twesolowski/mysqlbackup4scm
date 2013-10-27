@@ -24,7 +24,7 @@ IF NOT [%password%]==[] set password=-p%password%
 REM create destination dir
 IF NOT EXIST %repository%  mkdir %repository%
 
-echo \q | %mysql% -u %username% %password% 2>nul
+echo \q | %mysql% -u %username% -h %hostname% %password% 2>nul
 
 if "%ERRORLEVEL%" == "0" (
   echo CONNECTION OK
@@ -36,7 +36,7 @@ if "%ERRORLEVEL%" == "0" (
 
 :DUMP
 echo|set /p=DUMPING STRUCTURE 
-%md% -u %username% %password% -d   %database%  >  %file_structure%
+%md% -u %username% %password% -h %hostname% -d   %database%  >  %file_structure%
 if "%ERRORLEVEL%" == "0" (
    echo OK
 ) else (
@@ -44,7 +44,7 @@ if "%ERRORLEVEL%" == "0" (
 )
 
 echo|set /p=DUMPING DATA 
-%md% -u %username% %password% --replace --no-create-info --skip-extended-insert %database%  >  %file_data%
+%md% -u %username% %password% -h %hostname% --replace --no-create-info --skip-extended-insert %database%  >  %file_data%
 if "%ERRORLEVEL%" == "0" (
     echo OK
 ) else (
