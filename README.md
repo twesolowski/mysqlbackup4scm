@@ -11,7 +11,7 @@ Features:
 - import data and/or structure
 
 Usage
-mysqdump4scm.bat - dumps data and structure
-mysqdump4scm.bat import data
-mysqdump4scm.bat import structure 
+- mysqdump4scm.bat - dumps data and structure
+- mysqdump4scm.bat import data
+- mysqdump4scm.bat import structure 
 
